@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""_summary_
-"""
+"""Defines the HBnB console."""
 import cmd
 import sys
 
