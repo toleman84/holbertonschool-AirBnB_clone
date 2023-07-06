@@ -1,0 +1,16 @@
+# .gitignore for ignore the following files ...
+
+# Tmp files
+*~
+
+# Pycache files
+*__pycache__*
+
+# test files ...
+test_base_model_dict.py
+test_base_model.py
+test_save_reload_base_model.py
+test_save_reload_user.py
+
+#created file from running console
+file.json
