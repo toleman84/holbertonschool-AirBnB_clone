@@ -1,6 +1,7 @@
 #!/usr/bi/python3
 """doc"""
 import json
+import re
 
 from models.base_model import BaseModel
 from models.user import User
@@ -9,6 +10,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+
 
 class FileStorage:
     """that serializes instances to a JSON file
@@ -36,7 +38,7 @@ class FileStorage:
             my_dict[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
             json.dump(my_dict, f)
-            
+
     def reload(self):
         """_summary_
         """
@@ -47,7 +49,7 @@ class FileStorage:
                     self.__objects[key] = value
         except FileNotFoundError:
             pass
-        
+
     def delete(self, obj=None):
         """_summary_
         """
@@ -59,3 +61,10 @@ class FileStorage:
         """_summary_
         """
         self.reload()
+
+    def get(self, objId):
+        for key in self.all():
+            result = re.sub(r'^.*?\.', '', key)
+            if objId == result:
+                return self.__objects[key]
+        return None

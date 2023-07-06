@@ -37,41 +37,42 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """empty line"""
         pass
-    
+
     def do_create(self, arg):
-        if self.checkClassName(arg) == False:
+        """"""
+        if self.checkClassName(arg) is False:
             return False
-        
+
         args = arg.split()
         className = args[0]
-        
+
         model = globals()[className]()
         model.save()
         print(model.id)
         return True
-    
+
     def do_show(self, arg):
-        if self.checkClassName(arg) == False:
+        if self.checkClassName(arg) is False:
             return False
-        
+
         args = arg.split()
         className = args[0]
-        
+
         if len(args) < 2:
             print("** instance id missing **")
             return False
-        
+
         classId = className+"."+args[1]
         for key, value in storage.all().items():
             if key == classId:
                 print(value.__str__())
                 return True
-        
+
         print("** no instance found **")
         return False
-    
+
     def do_destroy(self, arg):
-        if self.checkClassName(arg) == False:
+        if self.checkClassName(arg) is False:
             return False
 
         args = arg.split()
@@ -90,11 +91,11 @@ class HBNBCommand(cmd.Cmd):
 
         print("** no instance found **")
         return False
-    
+
     def do_all(self, arg):
         args = arg.split()
         instances = []
-        
+
         if len(args) < 1:
             for key, value in storage.all().items():
                 instances.append(value.__str__())
@@ -104,63 +105,62 @@ class HBNBCommand(cmd.Cmd):
             if className not in globals():
                 print("** class doesn't exist **")
                 return False
-            
+
             for key, value in storage.all().items():
                 if value.__class__.__name__ == className:
                     instances.append(value.__str__())
-                    
+
         print(instances)
-    
+
     def do_update(self, arg):
-        if self.checkClassName(arg) == False:
+        if self.checkClassName(arg) is False:
             return False
 
         args = arg.split()
         className = args[0]
         exists = False
         obj = None
-        
+
         if len(args) < 2:
             print("** instance id missing **")
             return False
-        
+
         classId = className+"."+args[1]
         for key, value in storage.all().items():
             if key == classId:
                 exists = True
                 obj = value
-                
-        if exists == False:
+
+        if exists is False:
             print("** no instance found **")
             return False
 
         if len(args) < 3:
             print("** attribute name missing **")
             return False
-        
+
         if len(args) < 4:
             print("** value missing **")
             return False
-        
+
         obj.__setattr__(args[2], args[3])
         storage.new(obj)
         storage.save()
-        
-    
+
     @classmethod
     def checkClassName(self, arg):
         args = arg.split()
-        
+
         if len(args) < 1:
             print("** class name missing **")
             return False
-        
+
         className = args[0]
 
         if className not in globals():
             print("** class doesn't exist **")
             return False
-        
+
         return True
 
 
