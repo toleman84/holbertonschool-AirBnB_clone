@@ -4,6 +4,7 @@ from models.amenity import Amenity
 
 
 class TestAmenity(unittest.TestCase):
+
     def test_create_amenity(self):
         amenity = Amenity(name="Wifi")
         self.assertEqual(amenity.name, "Wifi")
@@ -31,6 +32,7 @@ class TestAmenity(unittest.TestCase):
         models.storage.delete(amenity)
         retrieved_amenity = models.storage.get(amenity.id)
         self.assertIsNone(retrieved_amenity)
+
 
 if __name__ == '__main__':
     unittest.main()
