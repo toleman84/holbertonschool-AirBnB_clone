@@ -71,5 +71,6 @@ class TestAmenity(unittest.TestCase):
         self.assertIn("'created_at': " + dt_repr, amstring)
         self.assertIn("'updated_at': " + dt_repr, amstring)
 
+
 if __name__ == '__main__':
     unittest.main()

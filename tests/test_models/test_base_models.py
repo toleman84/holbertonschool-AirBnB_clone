@@ -19,7 +19,8 @@ class TestBaseModel(unittest.TestCase):
     def test_init(self):
         model = BaseModel()
         self.assertNotEqual(model.id, str(uuid.uuid4()))
-        self.assertEqual(str(type(model)), "<class 'models.base_model.BaseModel'>")
+        self.assertEqual(str(type(model)),
+                         "<class 'models.base_model.BaseModel'>")
         self.assertIsInstance(model, BaseModel)
         self.assertTrue(issubclass(type(model), BaseModel))
 
@@ -87,8 +88,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(self.base_model.created_at,
                             self.base_model.updated_at)
         self.assertLess(self.base_model.created_at,
-                            self.base_model.updated_at)
-    
+                        self.base_model.updated_at)
+
     def test_two_saves(self):
         bm = BaseModel()
         sleep(0.05)
@@ -119,6 +120,7 @@ class TestBaseModel(unittest.TestCase):
         model = BaseModel()
         with self.assertRaises(TypeError):
             model.to_dict(None)
+
 
 if __name__ == '__main__':
     unittest.main()

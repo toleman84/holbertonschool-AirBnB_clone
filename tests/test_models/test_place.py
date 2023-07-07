@@ -6,6 +6,7 @@ import unittest
 from models.place import Place
 from models.base_model import BaseModel
 
+
 class TestPlace(unittest.TestCase):
     def setUp(self):
         self.place = Place()
