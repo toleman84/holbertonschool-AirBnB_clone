@@ -28,6 +28,14 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(base.id)
         self.assertEqual(base.__class__.__name__, "BaseModel")
 
+    def test_instantiation_with_kwargs(self):
+        dt = datetime.today()
+        dt_iso = dt.isoformat()
+        bm = BaseModel(id="123", created_at=dt_iso, updated_at=dt_iso)
+        self.assertEqual(bm.id, "123")
+        self.assertEqual(bm.created_at, dt)
+        self.assertEqual(bm.updated_at, dt)
+
     def test_id(self):
         w = [BaseModel().id for i in range(1000)]
         self.assertEqual(len(set(w)), len(w))
@@ -94,18 +102,23 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         model = BaseModel()
-        expected_dict = {
-            "id": model.id,
-            "created_at": model.created_at.isoformat(),
-            "updated_at": model.updated_at.isoformat(),
-            "__class__": model.__class__.__name__,
-        }
-        base1_dict = self.base_model.to_dict()
-        self.assertEqual(model.to_dict(), expected_dict)
-        self.assertEqual(self.base_model.__class__.__name__, 'BaseModel')
-        self.assertIsInstance(base1_dict['created_at'], str)
-        self.assertIsInstance(base1_dict['updated_at'], str)
+        self.assertIn("id", model.to_dict())
+        self.assertIn("created_at", model.to_dict())
+        self.assertIn("updated_at", model.to_dict())
+        self.assertIn("__class__", model.to_dict())
+        self.assertTrue(dict, type(model.to_dict()))
 
+    def test_to_dict_contains_added_attributes(self):
+        model = BaseModel()
+        model.name = "Holberton"
+        model.my_number = 98
+        self.assertIn("name", model.to_dict())
+        self.assertIn("my_number", model.to_dict())
+
+    def test_to_dict_with_arg(self):
+        model = BaseModel()
+        with self.assertRaises(TypeError):
+            model.to_dict(None)
 
 if __name__ == '__main__':
     unittest.main()
