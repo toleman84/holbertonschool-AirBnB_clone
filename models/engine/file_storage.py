@@ -22,7 +22,8 @@ class FileStorage:
         """
     Returns the dictionary of objects (__objects).
 
-    The method retrieves and returns the dictionary of objects (__objects) stored in the class.
+    The method retrieves and returns the dictionary of objects (__objects)
+    stored in the class.
 
     Returns:
         The dictionary of objects (__objects).
