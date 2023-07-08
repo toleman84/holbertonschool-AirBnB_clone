@@ -26,13 +26,13 @@ class BaseModel:
 
     def __str__(self):
         """
-    Returns a string representation of the object.
+        Returns a string representation of the object.
 
-    The method formats the string to include the class name, object ID,
-    and the object's dictionary representation.
+        The method formats the string to include the class name, object ID,
+        and the object's dictionary representation.
 
-    Returns:
-        A string representation of the object.
+        Returns:
+            A string representation of the object.
     """
         clsName = self.__class__.__name__
         id = self.id
@@ -40,13 +40,13 @@ class BaseModel:
 
     def save(self):
         """
-    Saves the object and updates the updated_at attribute.
+        Saves the object and updates the updated_at attribute.
 
-    The method updates the updated_at attribute with the current datetime,
-    adds the object to the storage, and saves the storage.
+        The method updates the updated_at attribute with the current datetime,
+        adds the object to the storage, and saves the storage.
 
-    Returns:
-        None
+        Returns:
+            None
     """
         self.updated_at = datetime.today()
         models.storage.new(self)
@@ -54,14 +54,14 @@ class BaseModel:
 
     def to_dict(self):
         """
-    Converts the object into a dictionary representation.
+        Converts the object into a dictionary representation.
 
-    The method creates a new dictionary and copies the object's attributes
-    into the new dictionary.
-    The __class__ attribute is added to represent the class name of the object
+        The method creates a new dictionary and copies the object's attributes
+        into the new dictionary.
+        The __class__ attribute is added to represent the class name of the object
 
-    Returns:
-        A dictionary representing the object.
+        Returns:
+            A dictionary representing the object.
     """
         new_dict = self.__dict__.copy()
         new_dict['created_at'] = self.created_at.isoformat()

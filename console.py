@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, args):
-        """to exit the program"""
+        """use to exit the program"""
         return True
 
     def emptyline(self):
@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """"""
+        """Create instance specified by user"""
         if self.checkClassName(arg) is False:
             return False
 
@@ -51,6 +51,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_show(self, arg):
+        """Print string representation: name and id"""
         if self.checkClassName(arg) is False:
             return False
 
@@ -71,6 +72,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_destroy(self, arg):
+        """Destroy instance specified by user; Save changes to JSON file"""
         if self.checkClassName(arg) is False:
             return False
 
@@ -92,6 +94,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_all(self, arg):
+        """Print all objects or all objects of a specific class"""
         args = arg.split()
         instances = []
 
@@ -112,6 +115,7 @@ class HBNBCommand(cmd.Cmd):
         print(instances)
 
     def do_update(self, arg):
+        """Updates an object, must be an exact attribute"""
         if self.checkClassName(arg) is False:
             return False
 
@@ -148,6 +152,7 @@ class HBNBCommand(cmd.Cmd):
 
     @classmethod
     def checkClassName(self, arg):
+        """check class if name:"""
         args = arg.split()
 
         if len(args) < 1:
