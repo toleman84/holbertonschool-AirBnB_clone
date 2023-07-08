@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines the HBnB console."""
+"""Define the HBnB console"""
 import cmd
 import sys
 
@@ -152,7 +152,7 @@ class HBNBCommand(cmd.Cmd):
 
     @classmethod
     def checkClassName(self, arg):
-        """check class if name:"""
+        """check class if name"""
         args = arg.split()
 
         if len(args) < 1:

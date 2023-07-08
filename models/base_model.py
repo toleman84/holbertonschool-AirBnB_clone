@@ -58,7 +58,8 @@ class BaseModel:
 
         The method creates a new dictionary and copies the object's attributes
         into the new dictionary.
-        The __class__ attribute is added to represent the class name of the object
+        The __class__ attribute is added to represent
+        the class name of the object
 
         Returns:
             A dictionary representing the object.
