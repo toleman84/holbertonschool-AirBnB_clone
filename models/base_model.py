@@ -33,7 +33,7 @@ class BaseModel:
 
         Returns:
             A string representation of the object.
-    """
+        """
         clsName = self.__class__.__name__
         id = self.id
         return "[{}] ({}) {}".format(clsName, id, self.__dict__)
@@ -47,7 +47,7 @@ class BaseModel:
 
         Returns:
             None
-    """
+        """
         self.updated_at = datetime.today()
         models.storage.new(self)
         models.storage.save()
@@ -63,7 +63,7 @@ class BaseModel:
 
         Returns:
             A dictionary representing the object.
-    """
+        """
         new_dict = self.__dict__.copy()
         new_dict['created_at'] = self.created_at.isoformat()
         new_dict['updated_at'] = self.updated_at.isoformat()

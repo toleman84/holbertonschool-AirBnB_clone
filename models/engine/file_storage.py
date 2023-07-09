@@ -1,5 +1,5 @@
-#!/usr/bi/python3
-"""Defines the FileStorage class."""
+#!/usr/bin/python3
+"""Defines the FileStorage class"""
 import json
 import re
 

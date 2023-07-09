@@ -152,7 +152,7 @@ class HBNBCommand(cmd.Cmd):
 
     @classmethod
     def checkClassName(self, arg):
-        """check class if name"""
+        """check class if name: boolean"""
         args = arg.split()
 
         if len(args) < 1:
